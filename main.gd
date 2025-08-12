@@ -23,7 +23,7 @@ func _ready() -> void:
 	NetworkManager.join_success.connect(onLobbyJoined)
 	NetworkManager.lobby_list_updated.connect(onLobbyListReceived)
 	NetworkManager.player_list_updated.connect(onPlayerListReceived)
-	NetworkManager.request_steam_lobbies()
+	NetworkManager.request_steam_lobbies(true)
 	
 	host_lan_button.pressed.connect(NetworkManager.host_lan)
 	join_lan_button.pressed.connect(NetworkManager.join_lan.bind(join_lan_ip.text))
@@ -31,7 +31,7 @@ func _ready() -> void:
 	host_steam_button.pressed.connect(NetworkManager.host_steam)
 	join_steam_button.pressed.connect(NetworkManager.join_steam.bind(join_steam_id.text.to_int()))
 	
-	refresh_button.pressed.connect(NetworkManager.request_steam_lobbies)
+	refresh_button.pressed.connect(NetworkManager.request_steam_lobbies.bind(true))
 	start_button.pressed.connect(NetworkManager.load_scene.bind(scene_to_load.resource_path))
 	pass
 	

@@ -4,6 +4,9 @@ var peer : MultiplayerPeer
 var lobby_data : Dictionary
 var player_list : Dictionary
 
+var steam_app_id : int = 480
+var steam_lobby_filter : String = "ZYX_DELTT"
+
 var timeout_timer : float = 0.0
 
 signal join_success(id)
@@ -94,7 +97,7 @@ func get_computer_name() -> String:
 	
 func host_steam(_max_players : int = 2):
 	clear_lobby()
-	var steam_rsp : Dictionary = Steam.steamInitEx(480, false)
+	var steam_rsp : Dictionary = Steam.steamInitEx(steam_app_id, false)
 	if steam_rsp.get("status") != 0:
 		printerr(steam_rsp.get("verbal"))
 		return
@@ -113,7 +116,7 @@ func host_steam(_max_players : int = 2):
 	
 func join_steam(_lobby_id : int):
 	clear_lobby()
-	var steam_rsp : Dictionary = Steam.steamInitEx(480, false)
+	var steam_rsp : Dictionary = Steam.steamInitEx(steam_app_id, false)
 	if steam_rsp.get("status") != 0:
 		printerr(steam_rsp.get("verbal"))
 		return
@@ -132,13 +135,13 @@ func join_steam(_lobby_id : int):
 	pass
 	
 func request_steam_lobbies(_filtered : bool = false):
-	var steam_rsp : Dictionary = Steam.steamInitEx(480, false)
+	var steam_rsp : Dictionary = Steam.steamInitEx(steam_app_id, false)
 	if steam_rsp.get("status") != 0:
 		printerr(steam_rsp.get("verbal"))
 		return
 	
 	if _filtered:
-		Steam.addRequestLobbyListStringFilter("mode", "ZYX_DELTT", Steam.LobbyComparison.LOBBY_COMPARISON_EQUAL)
+		Steam.addRequestLobbyListStringFilter("mode", steam_lobby_filter, Steam.LobbyComparison.LOBBY_COMPARISON_EQUAL)
 	
 	Steam.addRequestLobbyListDistanceFilter(Steam.LobbyDistanceFilter.LOBBY_DISTANCE_FILTER_WORLDWIDE)
 	Steam.requestLobbyList()
@@ -151,7 +154,7 @@ func onSteamLobbyCreate(_connected : int, _lobby_id : int):
 	else:
 		print("Steam lobby ", _lobby_id, " created.")
 	
-	Steam.setLobbyData(_lobby_id, "mode", "ZYX_DELTT")
+	Steam.setLobbyData(_lobby_id, "mode", steam_lobby_filter)
 	Steam.setLobbyData(_lobby_id, "name", Steam.getPersonaName() + "'s lobby")
 	Steam.allowP2PPacketRelay(true)
 	Steam.setLobbyJoinable(_lobby_id, true)
@@ -174,8 +177,8 @@ func onSteamLobbyJoin(_lobby_id: int, _permissions: int, _locked: bool, _respons
 		printerr("Steam lobby ", _lobby_id, " couldn't be joined: ", reason)
 		return
 		
-	#if not Steam.getLobbyData(lobby_id, "mode") == "ZYX_DELTT":
-		#print("WARNING: Lobby ", lobby_id, " is not signed with ZYX_DELTT")
+	#if not Steam.getLobbyData(lobby_id, "mode") == steam_lobby_filter:
+		#print("WARNING: Lobby ", lobby_id, " is not signed with " + steam_lobby_filter")
 		#return
 	
 	var steam_peer : SteamMultiplayerPeer = SteamMultiplayerPeer.new()
@@ -279,7 +282,8 @@ func onPeerDisconnected(_peer_id : int):
 	pass
 	
 func onPlayerListUpdated(list):
-	print(list)
+	if list.size() > 0:
+		print(list)
 	pass
 	
 func clear_lobby():
