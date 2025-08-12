@@ -1,0 +1,6 @@
+res://network/network_steam.gd
+res://network/network_manager.gd
+res://network/network_lan.gd
+res://main.tscn
+res://main.gd
+res://test.tscn
