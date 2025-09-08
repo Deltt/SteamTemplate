@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkie6cvx8pgds"]
+
+[ext_resource type="Script" uid="uid://dbhm0h7qs814y" path="res://ControllerPrefabs/StrategyCamera/strategy_camera.gd" id="1_whjet"]
+
+[node name="StrategyCamera" type="Node3D"]
+script = ExtResource("1_whjet")

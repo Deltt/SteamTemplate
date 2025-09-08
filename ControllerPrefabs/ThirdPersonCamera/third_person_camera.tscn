@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bq3lf8vawef7i"]
+
+[ext_resource type="Script" uid="uid://bgubq3o01up4s" path="res://ControllerPrefabs/ThirdPersonCamera/third_person_camera.gd" id="1_7sklr"]
+
+[node name="ThirdPersonCamera" type="Node3D"]
+script = ExtResource("1_7sklr")

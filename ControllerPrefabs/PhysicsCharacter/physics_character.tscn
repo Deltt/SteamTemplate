@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://cl2hedl05jkh"]
+
+[ext_resource type="Script" uid="uid://bbloqggk3ec0q" path="res://ControllerPrefabs/PhysicsCharacter/physics_character.gd" id="1_n832k"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kw167"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_kw167"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2oicu"]
+
+[node name="PhysicsCharacter" type="RigidBody3D"]
+script = ExtResource("1_n832k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_kw167")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_kw167")
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_2oicu")
+target_position = Vector3(0, -0.2, 0)
