@@ -12,8 +12,8 @@ func _ready() -> void:
 	for peer in spawn_player_list:
 		var player_instance = player_scene.instantiate()
 		player_instance.name = str(peer)
-		player_instance.position = Vector3(offset, 30, 0)
-		player_instance.set("network_position", Vector3(offset, 30, 0))
+		player_instance.position = Vector3(offset, 1, 0)
+		player_instance.set("network_position", Vector3(offset, 1, 0))
 		player_instance.set_multiplayer_authority(peer)
 		add_child(player_instance, true)
 		offset += 2.5

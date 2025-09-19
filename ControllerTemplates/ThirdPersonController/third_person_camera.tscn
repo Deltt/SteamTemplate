@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqa22ktg0hj8"]
+
+[ext_resource type="Script" uid="uid://b4biontf7bc6q" path="res://ControllerTemplates/ThirdPersonController/third_person_camera.gd" id="1_ime06"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ime06"]
+
+[node name="ThirdPersonCamera" type="Node3D" node_paths=PackedStringArray("pivot_y", "pivot_x", "spring", "camera")]
+script = ExtResource("1_ime06")
+pivot_y = NodePath("Pivot_Y")
+pivot_x = NodePath("Pivot_Y/Pivot_X")
+spring = NodePath("Pivot_Y/Pivot_X/SpringArm3D")
+camera = NodePath("Pivot_Y/Pivot_X/SpringArm3D/Camera3D")
+
+[node name="Pivot_Y" type="Node3D" parent="."]
+
+[node name="Pivot_X" type="Node3D" parent="Pivot_Y"]
+
+[node name="SpringArm3D" type="SpringArm3D" parent="Pivot_Y/Pivot_X"]
+shape = SubResource("SphereShape3D_ime06")
+spring_length = 10.0
+
+[node name="Camera3D" type="Camera3D" parent="Pivot_Y/Pivot_X/SpringArm3D"]

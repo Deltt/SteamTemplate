@@ -1,0 +1,7 @@
+res://main.tscn::0ec93a14f33c87ff049996f3e0cbc132::1758309833::res://.godot/exported/133200997/export-3070c538c03ee49b7677ff960a3f5195-main.scn
+res://test.tscn::8daba331567e8fd57d8552e0952fa486::1758310525::res://.godot/exported/133200997/export-f0a4ea32b72b64218d23e48a955cbc61-test.scn
+res://ControllerTemplates/CharacterBodyPlayer/character_body_player.tscn::46f31bb98e11283751b65dcd9bcc7df5::1758309831::res://.godot/exported/133200997/export-8e383a061e43bb2b409a80b6f3631fb8-character_body_player.scn
+res://ControllerTemplates/FirstPersonController/first_person_camera.tscn::1f0c6f81218c827c9ac5e2452779eeb3::1758309831::res://.godot/exported/133200997/export-49373af9a7f09a766adc1e4852dfd4e7-first_person_camera.scn
+res://ControllerTemplates/StrategyController/strategy_camera.tscn::c6d9af753abbe983cd786821791a5544::1758309831::res://.godot/exported/133200997/export-932984d01d46b9094bb55e8522be7f37-strategy_camera.scn
+res://ControllerTemplates/ThirdPersonController/third_person_camera.tscn::da06ab07b3b32f6a3f2f07db5ccd7da0::1758309831::res://.godot/exported/133200997/export-8ce0084751611b127c9d96be6bee0a12-third_person_camera.scn
+res://player.tscn::4e9a43c1d0276a4213655d3d3e08bf2b::1758309880::res://.godot/exported/133200997/export-36a25e342948d0ceacc500772b5412b3-player.scn

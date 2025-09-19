@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpvciigxshqhw"]
+
+[ext_resource type="PackedScene" uid="uid://crgjt0i323wbs" path="res://ControllerTemplates/CharacterBodyPlayer/character_body_player.tscn" id="1_4flbx"]
+[ext_resource type="PackedScene" uid="uid://bqa22ktg0hj8" path="res://ControllerTemplates/ThirdPersonController/third_person_camera.tscn" id="2_onrkg"]
+
+[node name="CharacterBodyPlayer" instance=ExtResource("1_4flbx")]
+
+[node name="ThirdPersonCamera" parent="." index="3" instance=ExtResource("2_onrkg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.60366, 0)

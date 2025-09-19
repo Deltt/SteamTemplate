@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://h35xjwsxxnvu"]
+
+[ext_resource type="Script" uid="uid://c5wn3huuwlfvb" path="res://ControllerTemplates/FirstPersonController/first_person_camera.gd" id="1_pk7no"]
+
+[node name="FirstPersonCamera" type="Node3D" node_paths=PackedStringArray("pivot_y", "pivot_x", "camera")]
+script = ExtResource("1_pk7no")
+pivot_y = NodePath("Pivot_Y")
+pivot_x = NodePath("Pivot_Y/Pivot_X")
+camera = NodePath("Pivot_Y/Pivot_X/Camera3D")
+
+[node name="Pivot_Y" type="Node3D" parent="."]
+
+[node name="Pivot_X" type="Node3D" parent="Pivot_Y"]
+
+[node name="Camera3D" type="Camera3D" parent="Pivot_Y/Pivot_X"]

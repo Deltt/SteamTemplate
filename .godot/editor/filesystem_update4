@@ -1,2 +1,2 @@
-res://main.tscn
 res://test.tscn
+res://network/network_manager.gd
