@@ -287,7 +287,7 @@ func onPlayerListUpdated(list):
 	pass
 
 func clear_lobby():
-	if lobby_data.has("id"):
+	if lobby_data.has("id") and peer is SteamMultiplayerPeer:
 		Steam.leaveLobby(lobby_data.get("id"))
 
 	multiplayer.multiplayer_peer.close()
