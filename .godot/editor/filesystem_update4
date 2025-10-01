@@ -4,9 +4,6 @@ res://textures_and_materials/Tiles089_1K-JPG_256/tiles089.material
 res://shaders/psx_viewport.gdshader
 res://shaders/light_only.gdshader
 res://test.tscn
-res://scenes/modules/floor.tscn
-res://scenes/modules/wall.tscn
 res://scenes/modules/room.tscn
 res://player.tscn
 res://game.tscn
-res://scenes/modules/wall_small.tscn
