@@ -1,9 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://dpvciigxshqhw"]
+[gd_scene load_steps=4 format=3 uid="uid://l1li1mdiyeel"]
 
-[ext_resource type="PackedScene" uid="uid://crgjt0i323wbs" path="res://ControllerTemplates/CharacterBodyPlayer/character_body_player.tscn" id="1_4flbx"]
-[ext_resource type="PackedScene" uid="uid://bqa22ktg0hj8" path="res://ControllerTemplates/ThirdPersonController/third_person_camera.tscn" id="2_onrkg"]
+[ext_resource type="PackedScene" uid="uid://crgjt0i323wbs" path="res://controller_templates/character_body_player/character_body_player.tscn" id="1_4flbx"]
+[ext_resource type="PackedScene" uid="uid://h35xjwsxxnvu" path="res://controller_templates/first_person_controller/first_person_camera.tscn" id="2_onrkg"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_onrkg"]
 
 [node name="CharacterBodyPlayer" instance=ExtResource("1_4flbx")]
 
-[node name="ThirdPersonCamera" parent="." index="3" instance=ExtResource("2_onrkg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.60366, 0)
+[node name="FirstPersonCamera" parent="." index="3" instance=ExtResource("2_onrkg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65381, 0)
+
+[node name="PlayerArea" type="Area3D" parent="." index="4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_onrkg")

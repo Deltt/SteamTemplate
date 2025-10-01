@@ -1,27 +1,169 @@
-[gd_scene load_steps=5 format=3 uid="uid://dbqdghqikng8s"]
+[gd_scene load_steps=6 format=3 uid="uid://dbqdghqikng8s"]
 
 [ext_resource type="Script" uid="uid://d16tmt4dss7hb" path="res://player_spawner.gd" id="1_37kl0"]
-[ext_resource type="PackedScene" uid="uid://dpvciigxshqhw" path="res://player.tscn" id="2_8uh7m"]
+[ext_resource type="PackedScene" uid="uid://l1li1mdiyeel" path="res://player.tscn" id="2_8uh7m"]
+[ext_resource type="PackedScene" uid="uid://rxrswd8lsghn" path="res://scenes/modules/floor.tscn" id="3_ppyta"]
+[ext_resource type="PackedScene" uid="uid://c6b1s3lgstobp" path="res://scenes/modules/wall.tscn" id="4_ykrsh"]
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_37kl0"]
-data = PackedVector3Array(-15, 0.5, 15, 15, 0.5, 15, -15, -0.5, 15, 15, 0.5, 15, 15, -0.5, 15, -15, -0.5, 15, 15, 0.5, -15, -15, 0.5, -15, 15, -0.5, -15, -15, 0.5, -15, -15, -0.5, -15, 15, -0.5, -15, 15, 0.5, 15, 15, 0.5, -15, 15, -0.5, 15, 15, 0.5, -15, 15, -0.5, -15, 15, -0.5, 15, -15, 0.5, -15, -15, 0.5, 15, -15, -0.5, -15, -15, 0.5, 15, -15, -0.5, 15, -15, -0.5, -15, 15, 0.5, 15, -15, 0.5, 15, 15, 0.5, -15, -15, 0.5, 15, -15, 0.5, -15, 15, 0.5, -15, -15, -0.5, 15, 15, -0.5, 15, -15, -0.5, -15, 15, -0.5, 15, 15, -0.5, -15, -15, -0.5, -15)
-
-[sub_resource type="BoxMesh" id="BoxMesh_mf4mk"]
-size = Vector3(30, 1, 30)
+[sub_resource type="Environment" id="Environment_ppyta"]
+background_mode = 1
+ambient_light_source = 1
+fog_enabled = true
+fog_light_color = Color(0.168627, 0.152941, 0.129412, 1)
 
 [node name="Test" type="Node3D"]
 script = ExtResource("1_37kl0")
 player_scene = ExtResource("2_8uh7m")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.493106, 0)
+[node name="Dungeon" type="Node3D" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_37kl0")
+[node name="Scaler" type="Node3D" parent="Dungeon"]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-mesh = SubResource("BoxMesh_mf4mk")
-skeleton = NodePath("../..")
+[node name="Room" type="Node3D" parent="Dungeon/Scaler"]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.958298, 0.140117, -0.249064, 0, 0.871548, 0.490311, 0.285772, -0.469864, 0.835202, 0, 3.09938, 0)
+[node name="Floor" parent="Dungeon/Scaler/Room" instance=ExtResource("3_ppyta")]
+
+[node name="Wall2" parent="Dungeon/Scaler/Room" instance=ExtResource("4_ykrsh")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="Room9" type="Node3D" parent="Dungeon/Scaler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Floor" parent="Dungeon/Scaler/Room9" instance=ExtResource("3_ppyta")]
+
+[node name="Wall3" parent="Dungeon/Scaler/Room9" instance=ExtResource("4_ykrsh")]
+transform = Transform3D(1, 0, -4.73695e-15, 0, 1, 0, 4.73695e-15, 0, 1, 0, 0, 0)
+
+[node name="Wall4" parent="Dungeon/Scaler/Room9" instance=ExtResource("4_ykrsh")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="Room11" type="Node3D" parent="Dungeon/Scaler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1)
+
+[node name="Floor" parent="Dungeon/Scaler/Room11" instance=ExtResource("3_ppyta")]
+
+[node name="Wall4" parent="Dungeon/Scaler/Room11" instance=ExtResource("4_ykrsh")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="Wall5" parent="Dungeon/Scaler/Room11" instance=ExtResource("4_ykrsh")]
+transform = Transform3D(1, 0, -4.73695e-15, 0, 1, 0, 4.73695e-15, 0, 1, 0, 0, 0)
+
+[node name="Room12" type="Node3D" parent="Dungeon/Scaler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
+
+[node name="Floor" parent="Dungeon/Scaler/Room12" instance=ExtResource("3_ppyta")]
+
+[node name="Floor2" parent="Dungeon/Scaler/Room12" instance=ExtResource("3_ppyta")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Wall5" parent="Dungeon/Scaler/Room12" instance=ExtResource("4_ykrsh")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Wall4" parent="Dungeon/Scaler/Room12" instance=ExtResource("4_ykrsh")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="Wall7" parent="Dungeon/Scaler/Room12" instance=ExtResource("4_ykrsh")]
+transform = Transform3D(1, 0, -4.73695e-15, 0, 1, 0, 4.73695e-15, 0, 1, 0, 0, 0.5)
+
+[node name="Wall8" parent="Dungeon/Scaler/Room12" instance=ExtResource("4_ykrsh")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 1.5)
+
+[node name="Wall6" parent="Dungeon/Scaler/Room12" instance=ExtResource("4_ykrsh")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 1)
+
+[node name="Room10" type="Node3D" parent="Dungeon/Scaler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="Floor" parent="Dungeon/Scaler/Room10" instance=ExtResource("3_ppyta")]
+
+[node name="Wall3" parent="Dungeon/Scaler/Room10" instance=ExtResource("4_ykrsh")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Wall4" parent="Dungeon/Scaler/Room10" instance=ExtResource("4_ykrsh")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="Room2" type="Node3D" parent="Dungeon/Scaler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Floor" parent="Dungeon/Scaler/Room2" instance=ExtResource("3_ppyta")]
+
+[node name="Wall" parent="Dungeon/Scaler/Room2" instance=ExtResource("4_ykrsh")]
+
+[node name="Wall3" parent="Dungeon/Scaler/Room2" instance=ExtResource("4_ykrsh")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Room3" type="Node3D" parent="Dungeon/Scaler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="Floor" parent="Dungeon/Scaler/Room3" instance=ExtResource("3_ppyta")]
+
+[node name="Wall" parent="Dungeon/Scaler/Room3" instance=ExtResource("4_ykrsh")]
+
+[node name="Wall3" parent="Dungeon/Scaler/Room3" instance=ExtResource("4_ykrsh")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Room4" type="Node3D" parent="Dungeon/Scaler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+
+[node name="Floor" parent="Dungeon/Scaler/Room4" instance=ExtResource("3_ppyta")]
+
+[node name="Wall" parent="Dungeon/Scaler/Room4" instance=ExtResource("4_ykrsh")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="Room5" type="Node3D" parent="Dungeon/Scaler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -1)
+
+[node name="Floor" parent="Dungeon/Scaler/Room5" instance=ExtResource("3_ppyta")]
+
+[node name="Wall" parent="Dungeon/Scaler/Room5" instance=ExtResource("4_ykrsh")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="Wall2" parent="Dungeon/Scaler/Room5" instance=ExtResource("4_ykrsh")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0, 0, 0)
+
+[node name="Room8" type="Node3D" parent="Dungeon/Scaler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -2)
+
+[node name="Floor" parent="Dungeon/Scaler/Room8" instance=ExtResource("3_ppyta")]
+
+[node name="Wall" parent="Dungeon/Scaler/Room8" instance=ExtResource("4_ykrsh")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Wall2" parent="Dungeon/Scaler/Room8" instance=ExtResource("4_ykrsh")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0, 0, 0)
+
+[node name="Room6" type="Node3D" parent="Dungeon/Scaler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 1)
+
+[node name="Floor" parent="Dungeon/Scaler/Room6" instance=ExtResource("3_ppyta")]
+
+[node name="Wall" parent="Dungeon/Scaler/Room6" instance=ExtResource("4_ykrsh")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="Wall2" parent="Dungeon/Scaler/Room6" instance=ExtResource("4_ykrsh")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0, 0, 0)
+
+[node name="Room7" type="Node3D" parent="Dungeon/Scaler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 2)
+
+[node name="Floor" parent="Dungeon/Scaler/Room7" instance=ExtResource("3_ppyta")]
+
+[node name="Wall" parent="Dungeon/Scaler/Room7" instance=ExtResource("4_ykrsh")]
+transform = Transform3D(1, 0, 4.73695e-15, 0, 1, 0, -4.73695e-15, 0, 1, 0, 0, 0)
+
+[node name="Wall2" parent="Dungeon/Scaler/Room7" instance=ExtResource("4_ykrsh")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0, 0, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.53847, 3.25064, 0)
+light_color = Color(1, 0.764706, 0.478431, 1)
+light_energy = 2.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.5385, 3.25064, 0)
+light_color = Color(1, 0.764706, 0.478431, 1)
+light_energy = 2.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ppyta")

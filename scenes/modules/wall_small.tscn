@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2bmbi5dml4e5"]
+
+[ext_resource type="Material" uid="uid://cielvviq3s41c" path="res://textures_and_materials/Tiles089_1K-JPG_256/tiles089.material" id="1_yssb7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yssb7"]
+size = Vector3(1, 1, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_yssb7"]
+size = Vector3(1, 1, 0.1)
+
+[node name="WallSmall" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.45)
+shape = SubResource("BoxShape3D_yssb7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.45)
+material_override = ExtResource("1_yssb7")
+mesh = SubResource("BoxMesh_yssb7")

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://chaxmjqw01abe"]
+
+[ext_resource type="PackedScene" uid="uid://rxrswd8lsghn" path="res://scenes/modules/floor.tscn" id="1_a3yka"]
+[ext_resource type="PackedScene" uid="uid://c6b1s3lgstobp" path="res://scenes/modules/wall.tscn" id="2_xblv6"]
+
+[node name="Room" type="Node3D"]
+
+[node name="Floor" parent="." instance=ExtResource("1_a3yka")]
+
+[node name="Wall" parent="." instance=ExtResource("2_xblv6")]
+
+[node name="Wall2" parent="." instance=ExtResource("2_xblv6")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="Wall3" parent="." instance=ExtResource("2_xblv6")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)

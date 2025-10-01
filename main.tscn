@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://d08outdfi6p41"]
 
 [ext_resource type="Script" uid="uid://bgwbxvj8dvn8j" path="res://main.gd" id="1_ig7tw"]
-[ext_resource type="PackedScene" uid="uid://dbqdghqikng8s" path="res://test.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://y02figeyxfpq" path="res://game.tscn" id="2_0xm2m"]
 
 [node name="Main" type="HBoxContainer" node_paths=PackedStringArray("host_steam_button", "join_steam_button", "join_steam_id", "host_lan_button", "join_lan_button", "join_lan_ip", "lobby_list_container", "player_list_container", "connection_info", "lobby_id_copy", "refresh_button", "start_button")]
 anchors_preset = 15

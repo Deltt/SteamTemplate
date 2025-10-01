@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://y02figeyxfpq"]
+
+[ext_resource type="PackedScene" uid="uid://dbqdghqikng8s" path="res://test.tscn" id="1_80nbo"]
+[ext_resource type="Shader" uid="uid://dva88spcq3a5v" path="res://shaders/psx_viewport.gdshader" id="1_e2o6t"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_feb5d"]
+shader = ExtResource("1_e2o6t")
+shader_parameter/enabled = true
+shader_parameter/dithering = true
+shader_parameter/colors = 16
+shader_parameter/dither_size = 2
+
+[node name="Game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_feb5d")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+stretch_shrink = 4
+metadata/_edit_lock_ = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+anisotropic_filtering_level = 0
+size = Vector2i(480, 270)
+render_target_update_mode = 4
+
+[node name="Test" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_80nbo")]

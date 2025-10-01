@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://h35xjwsxxnvu"]
 
-[ext_resource type="Script" uid="uid://c5wn3huuwlfvb" path="res://ControllerTemplates/FirstPersonController/first_person_camera.gd" id="1_pk7no"]
+[ext_resource type="Script" uid="uid://c5wn3huuwlfvb" path="res://controller_templates/first_person_controller/first_person_camera.gd" id="1_pk7no"]
 
 [node name="FirstPersonCamera" type="Node3D" node_paths=PackedStringArray("pivot_y", "pivot_x", "camera")]
 script = ExtResource("1_pk7no")
